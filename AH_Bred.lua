@@ -104,9 +104,9 @@ local update_state = {
 	update_script = false,
 	update_scoreboard = false
 }
-local script_version = 14
-local script_version_text = "4.0 Update"
-local update_url = "https://raw.githubusercontent.com/Daria2006/skript/main/update.ini"
+local script_version = 13
+local script_version_text = "3.2 Update"
+local update_url = "https://raw.githubusercontent.com/YamadaEnotic/AH-Script/master/update.ini"
 local update_path = getWorkingDirectory() .. '/update.ini'
 local script_url = "https://raw.githubusercontent.com/YamadaEnotic/AH-Script/master/AH_Bred.lua"
 local script_path = thisScript().path
@@ -130,10 +130,6 @@ local defTable = {
 		Chat_Logger = false,
 		hide_td = false,
 		HelloAC = "hi",
-		-- new
-		AdminPassword = "",
-		LoginPassword = '',
-		Wish = '',
 		number_themes = 5
 	},
 	keys = {
@@ -393,9 +389,7 @@ local cmd_punis_jail = { "cdm" , "pk" , "ca" , "np" , "zv" , "dbp" , "bg" , "dm"
 local cmd_punis_mute = { "osk" , "mat" , "or" , "oa" , "ua" , "va" , "fld" , "popr" , "nead" , "rek" , "rosk" , "rmat" , "rao" , "otop" , "rcp", "um" }
 local cmd_punis_ban = { "ch" , "sob" , "aim" , "rvn" , "cars" , "ac" , "ich" , "isob" , "iaim" , "irvn" , "icars" , "iac" , "bn" } 
 local i_ans = {
-   
 	["default"] =
-	
 	{
 		[u8"Начать работу по жалобе."] = "Начинаю работать по вашей жалобе.",
 		[u8"Уточните."] = "Пожалуйста уточните вашу жалобу.",
@@ -404,9 +398,7 @@ local i_ans = {
 		[u8"Слежу."] = "Слежу.",
 		[u8"Не оффтопте"] = "Не оффтопте!",
 		[u8"Проверим"] = "Проверим, ожидайте некотрое время.",
-		[u8"Приятной игры"] = "Приятной игры на Russian Drift Server!",
-		[u8"Укажите ID Нарушителя"] = "Укажите ID Нарушителя.",
-		[u8"Наказан"] = "Игрок был наказан.",
+		[u8"Приятной игры"] = "Приятной игры на Russian Drift Server!"
 	},
 	[u8'Про вип'] = 
 	{
@@ -416,14 +408,12 @@ local i_ans = {
 		[u8"Где взять платинум вип"] = "/donate > 5 пункт.",
 		[u8"Что может вип"] = "Данную информацию узнайте в /help > 7."
 	},
-	-- new
 	[u8'Аксессуары'] = 
 	{
 		[u8"Где взять аксессуары"] = "На центральном рынке. /trade",
 		[u8"Как одеть аксессуар"] = "/inv > эксклюзивные аксессуары",
 		[u8"Как посмотреть аксессуары"] = "/inv > эксклюзивные аксессуары",
-		[u8"Что делать с аксессуарами"] = "Одевать и продавать. /inv",
-		[u8"Как снять аксесуары"] = "/inv > пункт > снять"
+		[u8"Что делать с аксессуарами"] = "Одевать и продавать. /inv"
 	},
 	[u8'Про коины, очки и деньги'] =
 	{
@@ -442,8 +432,7 @@ local i_ans = {
 		[u8"Как выйти из банды"] = "/gleave.",
 		[u8"Система банд"] = "/menu > ситема банд.Там вы все найдете.",
 		[u8"Как создать"] = "/menu > ситема банд > создать.",
-		[u8"Где найти HTML-цвет."] = "Посмотрите в интернете. Ссылка - https://basicweb.ru/html/html_colors.php.",
-		[u8"Как вступить в банду."] = "Попросите игроков вас принять либо /menu > 16 пункт ( Авто набор в банду )"
+		[u8"Где найти HTML-цвет."] = "Посмотрите в интернете. Ссылка - https://basicweb.ru/html/html_colors.php."
 	},
 	[u8'Семья'] = 
 	{
@@ -452,29 +441,11 @@ local i_ans = {
 		[u8"Как уйти из семью"] = "/familypanel > покинуть семью.",
 		[u8"Меню семьи."] = "/familypanel, там вы сможете это найти."
 	},
-	-- new
 	[u8'Ссылки'] =
 	{
 		[u8"Ссылка на основателя"] = "Ссылка на вк основателя > vk.com/id139345872.",
 		[u8"Ссылка на кодера"] = "Кодер в ВК > vk.com/vipgamer228.",
-		[u8"Ссылка группы сервера"] = "Группа в ВК > vk.com/dmdriftgta.",
-		[u8"Ссылка на дискорд сервер"] = "Дискорд RDS > https://discord.gg/HQRxADK.",
-		[u8"Спец Администратор"] = "ВК Спец Администратора > https://vk.com/medic_maker.",
-		
-	},
-	-- new
-	[u8'Пункт Действия'] =
-	{
-		[u8"Пополнить жизнь и броню"] = "/mm > Действия > Пополнить жизнь и броню",
-		[u8"Анимации"] = "/mm > Действия > Анимации",
-		[u8"Сменить цвет ника"] = "/mm > Действия > Сменить цвет ника",
-		[u8"Сменить скин"] = "/mm > Действия > Сменить скин || /skin",
-		[u8"Сменить время"] = "/mm > Действия > Сменить время",
-		[u8"Сменить погоду"] = "/mm > Действия > Сменить погоду",
-		[u8"Сменить пароль"] = "/mm > Действия > Сменить пароль",
-		[u8"Сменить стиль боя"] = "/mm > Действия > Сменить стиль боя",
-		[u8"Самоубийство"] = "/mm > Действия > Самоубийство "
-		
+		[u8"Ссылка группы сервера"] = "Группа в ВК > vk.com/dmdriftgta."
 	},
 	[u8'Дом'] =
 	{
@@ -510,8 +481,7 @@ local i_ans = {
 		[u8"Вкк/Выкл приглашение в банду"] = "/menu > настройки > 11 пункт.",
 		[u8"Выбор ТС На текст драве"] = "/menu > настройки > 12 пункт.",
 		[u8"Вкл/Выкл кейс"] = "/menu > настройки > 13 пункт.",
-		[u8"Вкл/Выкл фпс показатель"] = "/menu > настройки > 15 пункт.",
-		[u8"Виртуальный мир"] = "/dt 1 - 990"
+		[u8"Вкл/Выкл фпс показатель"] = "/menu > настройки > 15 пункт."
 	},
 	[u8'Другое'] =
 	{
@@ -524,8 +494,7 @@ local i_ans = {
 		[u8"Как вкл/выкл кейс"] = "/menu > настройки > 13 пункт.",
 		[u8"Как отправлять дуель"] = "/duel id.",
 		[u8"Перезайдите"] = "Попробйте перезайти на сервер.",
-		[u8"Никак"] = "Никак.",
-		[u8"Да"] = "Да"
+		[u8"Никак"] = "Никак."
 	}
 }
 local translate = {
@@ -613,15 +582,11 @@ local i_admin_chat_setting = imgui.ImBool(false)
 local font_size_ac = imgui.ImBuffer(16)
 local line_ac = imgui.ImInt(16)
 local HelloAC = imgui.ImBuffer(300)
-local AdminPassword = imgui.ImBuffer(200)
-local LoginPassword = imgui.ImBuffer(200)
-local Wish = imgui.ImBuffer(200)
 local logo_image
 local chat_logger = imgui.ImBuffer(10000)
 local chat_find = imgui.ImBuffer(256)
 local checked_radio = imgui.ImInt(5)
 local menu_tems = imgui.ImBool(false)
-local ah_help = imgui.ImBool(false)
 local setting_items = {
 	Fast_ans = imgui.ImBool(false),
 	Punishments = imgui.ImBool(false),
@@ -643,9 +608,6 @@ function saveAdminChat()
 	config.achat.lines = admin_chat_lines.lines.v
 	config.achat.Font = font_size_ac.v
 	inicfg.save(config, directIni)
-end
-function saveWindowPos()
-    
 end
 function loadAdminChat()
 	admin_chat_lines.X = config.achat.X
@@ -682,7 +644,6 @@ function main()
 		i_setting_items.v = not i_setting_items.v
 		imgui.Process = i_setting_items.v
 	end)
-	
 	local file_read, c_line = io.open(getWorkingDirectory() .. "\\config\\AH_Setting\\mat\\mat.txt", "r"), 1
 	if file_read ~= nil then
 		file_read:seek("set", 0)
@@ -757,10 +718,6 @@ function main()
 	setting_items.Chat_Logger.v = config.setting.Chat_Logger
 	setting_items.hide_td.v = config.setting.hide_td
 	HelloAC.v = config.setting.HelloAC
-	-- new
-	AdminPassword.v = config.setting.AdminPassword
-	LoginPassword.v = config.setting.LoginPassword
-	Wish.v = config.setting.Wish
 	index_text_pos = config.setting.Y
 	checked_radio.v = config.setting.number_themes
 	font_ac = renderCreateFont("Arial", config.setting.Font, font_admin_chat.BOLD + font_admin_chat.SHADOW)
@@ -785,11 +742,9 @@ function main()
 		while true do
 			renderFontDrawText(font_watermark, tag .. "v." .. script_version_text .. " {FFFFFF}| {AAAAAA}" .. player_nick .. "[" .. player_id .. "]", 10, sh-20, 0xCCFFFFFF)
 			wait(1)
-
 		end
 	end)
 	sampAddChatMessage(tag .. "Загрузка прошла успешно.")
-	
 	
 	downloadUrlToFile(update_url, update_path, function(id, status)
 		if status == dlstat.STATUS_ENDDOWNLOADDATA then
@@ -807,24 +762,6 @@ function main()
 	
 	-- [x] -- Беск. цикл. -- [x] --
 	while true do
-	if isKeyDown(VK_NUMPAD3) then
-		sampSendChat("/online")
-		wait(100)
-		local c = math.floor(sampGetPlayerCount(false) / 10)
-		sampSendDialogResponse(1098, 1, c - 1)
-		sampCloseCurrentDialogWithButton(0)
-		sampAddChatMessage(tag .. "Сделано, мой капитан!")
-		wait(650)
-	end
-	if isKeyDown(109) then
-			sampSendChat("/ans")
-			sampSendDialogResponse (2348, 1, 0)
-			--wait(100)
-			checkOrClose()
-			local c = sampGetCurrentDialogListItem() + 1
-			print(c)
-			wait(650)
-	end
 		if isKeysDown(strToIdKeys(config.keys.Setting)) and (sampIsChatInputActive() == false) and (sampIsDialogActive() == false) then
 			i_setting_items.v = not i_setting_items.v
 			imgui.Process = true
@@ -862,20 +799,6 @@ function main()
 		else 
 			i_ans_window.v = false
 		end
-		
-		-- 121212
-			if sampGetCurrentDialogId() == 1227 and AdminPassword.v and sampIsDialogActive() then
-            sampSendDialogResponse(1227, 1, _, AdminPassword.v)
-			sampCloseCurrentDialogWithButton(1227, 1)
-		end
-		
-		
-		if sampGetCurrentDialogId() == 658 and LoginPassword.v and sampIsDialogActive() then
-            sampSendDialogResponse(658, 1, _, LoginPassword.v)
-			sampCloseCurrentDialogWithButton(1227, 1)
-		end
-		
-		
 		if not i_re_menu.v then
 			check_mouse = true
 		end
@@ -886,17 +809,6 @@ function main()
 		if isKeyJustPressed(VK_RBUTTON) and (sampIsChatInputActive() == false) and (sampIsDialogActive() == false) and control_recon and recon_to_player then
 			check_mouse = not check_mouse
 		end
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		if isKeysDown(strToIdKeys(config.keys.Re_menu)) and (sampIsChatInputActive() == false) and (sampIsDialogActive() == false) and control_recon and recon_to_player then
 			right_re_menu = not right_re_menu	
 		end
@@ -947,13 +859,7 @@ function sampCheckUpdateScript()
 		showNotification("Доступно обновление.", "Старая версия скрипта: {AA0000}" .. script_version_text .. "\nНовая версия скрипта: {33AA33}" .. updateIni.info.version_text)
 		update_state.update_script = true
 	end
-	if not res then
-		showNotification("Доступно обновление библиотеки.", "Старая версия библиотеки: {AA0000}Отсутствует.\nНовая версия библиотеки: {33AA33}" .. updateIni.info.sb_text_version)
-		update_state.update_scoreboard = true
 	
-		showNotification("Доступно обновление библиотеки.", "Старая версия библиотеки: {AA0000}" .. sc_board.text_version or "Отсутствует." .. "\nНовая версия библиотеки: {33AA33}" .. updateIni.info.sb_text_version)
-		update_state.update_scoreboard = true
-	end
 	os.remove(update_path)
 end
 function sampev.onTextDrawSetString(id, text)
@@ -1147,7 +1053,7 @@ function sampev.onServerMessage(color, text)
 				lc_text_chat = lc_lvl .. " • " .. lc_nick .. "[" .. lc_id .. "] | {FFFFFF}" .. lc_text
 			else
 				admin_chat_lines.color = color
-				lc_text_chat = lc_adm .. "{" .. (bit.tohex(join_argb(explode_samp_rgba(color)))):sub(3, 8) .. "} • " .. lc_lvl .. " • " .. lc_nick .. "[" .. lc_id .. "] : {FFFFFF}" .. lc_text 
+				lc_text_chat = lc_adm .. "{" .. (bit.tohex(join_argb(explode_samp_rgba(color)))):sub(3, 8) .. "} • " .. lc_lvl .. " • " .. lc_nick .. "[" .. lc_id .. "] | {FFFFFF}" .. lc_text 
 			end
 		else
 			if lc_adm == nil then
@@ -1170,9 +1076,7 @@ function sampev.onServerMessage(color, text)
 		showNotification("Уведомление", "Поступил новый репорт.")
 		return true
 	end
-
 	if check_mat ~= nil and check_mat_id ~= nil and setting_items.Chat_Logger.v then
-
 		local string_os = string.split(check_mat, " ")
 		for i, value in ipairs(onscene) do
 			for j, val in ipairs(string_os) do
@@ -1197,17 +1101,14 @@ function sampev.onServerMessage(color, text)
 							--sampSendChat("/ans " .. check_mat_id .. " ...в нашей группе с Скриншотом наказания. Наша группа VK >> vk.com/dmdriftgta")
 							sampSendChat("/mute " .. check_mat_id .. " 300 Нецензурная лексика.")
 							showNotification("Детектор обнаружил нарушение!", "Запрещенное слово: {FF0000}" .. value .. "\n {FFFFFF}Ник нарушителя: {FF0000}" .. sampGetPlayerNickname(tonumber(check_mat_id)))
-							sampSendChat('/time')					
 						end
 						break
 						break
-	
 					end
 				end
 			end
 		end
 		return true
-
 	end
 	if text == "Вы отключили меню при наблюдении" and setting_items.hide_td.v then
 		sampSendChat("/remenu")
@@ -1577,8 +1478,6 @@ function onWindowMessage(msg, wparam, lparam)
 	end
 end
 
-
-
 -- [x] -- ImGUI тело. -- [x] --
 local W_Windows = sw/1.145
 local H_Windows = 1
@@ -1591,21 +1490,17 @@ function imgui.OnDrawFrame()
 		imgui.Begin(u8"Ответы на ANS", i_ans_window)
 		local btn_size = imgui.ImVec2(-0.1, 0)
 		imgui.Checkbox(u8"Пожелание в конце.", i_back_prefix)
-		
 		imgui.Separator()
 		for key, v in pairs(i_ans) do
-		
 			if key == "default" then
-			imgui.Separator()
 				for key_2, v_2 in pairs(i_ans[key]) do
 					if imgui.Button(key_2, btn_size) then
 						if not i_back_prefix.v then
 							local settext = '{FFFFFF}' .. v_2
 							sampSendDialogResponse(2351, 1, 0, settext)
 						else
-							local settext = '{FFFFFF}' .. v_2 .. u8:decode(' {FF00FF}// ' .. Wish.v) 
+							local settext = '{FFFFFF}' .. v_2 .. ' {AAAAAA}// Приятной игры на "RDS"!'
 							sampSendDialogResponse(2351, 1, 0, settext)
-
 						end
 					end
 				end
@@ -1617,7 +1512,7 @@ function imgui.OnDrawFrame()
 								local settext = '{FFFFFF}' .. v_2
 								sampSendDialogResponse(2351, 1, 0, settext)
 							else
-								local settext = '{FFFFFF}' .. v_2 .. u8:decode(' {FF00FF}// ' .. Wish.v)
+								local settext = '{FFFFFF}' .. v_2 .. ' {AAAAAA}// Приятной игры на "RDS"!'
 								sampSendDialogResponse(2351, 1, 0, settext)
 							end
 						end
@@ -1665,20 +1560,8 @@ function imgui.OnDrawFrame()
 		imgui.SameLine()
 		imgui.SetCursorPosX(imgui.GetWindowWidth() - 35)
 		imgui.ToggleButton("##8", setting_items.Transparency)
-		
-		imgui.Text(u8"Полезные функции.")
-		imgui.SameLine(255)
-	   if imgui.Button(u8'Open') then
-	   ah_help.v = true
-	   end
-	   imgui.Separator()
+		imgui.Separator()
 		imgui.InputText(u8"Приветствие.", HelloAC)
-		imgui.InputText(u8'Пожелание.', Wish)
-		-- new
-		if imgui.CollapsingHeader(u8'Пароли.') then
-		imgui.InputText(u8"Админ Пароль", AdminPassword)
-		imgui.InputText(u8"Пароль Входа", LoginPassword)
-		end
 		imgui.Separator()
 		if setting_items.Admin_chat.v then
 			if imgui.Button(u8'Настройка админ чата.', btn_size) then
@@ -1708,12 +1591,7 @@ function imgui.OnDrawFrame()
 			config.setting.hide_td = setting_items.hide_td.v
 			config.setting.HelloAC = HelloAC.v
 			config.setting.number_themes = checked_radio.v
-			-- new
-			config.setting.AdminPassword = AdminPassword.v
-			config.setting.LoginPassword = LoginPassword.v
-			config.setting.Wish = Wish.v
 			inicfg.save(config, directIni)
-          sampAddChatMessage(tag .. 'Настройки сохранены.')
 		end	
 		imgui.SameLine()
 		if imgui.Button(u8"Отключить.") then
@@ -1772,13 +1650,12 @@ function imgui.OnDrawFrame()
 			imgui.SetCursorPosY(imgui.GetWindowHeight() - 50)
 			imgui.Separator()
 			imgui.Text(u8"Версия скрипта: " .. script_version_text)
-			if imgui.Button(u8"Обновления ##Info", imgui.ImVec2(-0.1, 0)) then
+			if imgui.Button(u8"Чего нового в скрипте ##Info", imgui.ImVec2(-0.1, 0)) then
 				i_info_update.v = true
 				i_setting_items.v = false
 			end
 		end
 		imgui.End()
-		
 		if setting_keys then
 			imgui.SetNextWindowPos(imgui.ImVec2(10, 10), imgui.Cond.FirstUseEver, imgui.ImVec2(1, 0.5))
 			imgui.SetNextWindowSize(imgui.ImVec2(300, sh/1.15), imgui.Cond.FirstUseEver)
@@ -1873,6 +1750,10 @@ function imgui.OnDrawFrame()
 		imgui.Text(u8"- Добавила новые ответы на репорты.")
 		imgui.Text(u8"- Добавила пожелание после ответа на репорт.")
 		imgui.Text(u8"- Исправила некоторые ошибки.")
+		imgui.Text(u8'Версия 4.2:')
+		imgui.Text(u8"- Исправила некоторые ошибки.")
+		imgui.Text(u8"- Добавила функцию раздачи виртов и взятие репорта.")
+		imgui.Text(u8"- Заменила в Админ Чате символ '|' на ':' дабы чат не сливался.")
 		imgui.SetCursorPosX(imgui.GetWindowWidth()/2)
 		if imgui.Button(u8"Выход.", imgui.ImVec2(100, 0)) then
 			i_info_update.v = false
@@ -2162,47 +2043,6 @@ function imgui.OnDrawFrame()
 			end
 		imgui.End()
 	end
-	-- 1111
-	if ah_help.v then
-		imgui.LockPlayer = true
-		imgui.SetNextWindowPos(imgui.ImVec2(200, 300), imgui.Cond.FirstUseEver, imgui.ImVec2(0, 0))
-		imgui.SetNextWindowSize(imgui.ImVec2(500, -200), imgui.Cond.FirstUseEver)
-		local btn_size = imgui.ImVec2(-0.1, 0)
-		imgui.Begin(u8"Полезные функции.( В разработке )", ah_help)
-	    imgui.Columns(3, 'ahhelp', true)
-		-- Column 1
-		imgui.Text(u8'Ссылки:')
-		imgui.SameLine()
-		imgui.TextQuestion(u8'Нажав на кнопку откроется браузер cо страницей ВКонтакте.')
-		if imgui.Button(u8'Группа скрипта') then
-		 os.execute('start https://vk.com/coding.lua_yamada')
-		end
-		if imgui.Button(u8'Создатель скрипта') then
-		 os.execute('start https://vk.com/yamada.fear')
-		end
-		if imgui.Button(u8'Разработчик скрипта') then
-		 os.execute('start https://vk.com/vrednaya_krevetka')
-		end
-		
-		
-		imgui.NextColumn()
-		-- Column 2
-		imgui.End()
-		end
-		
-function imgui.TextQuestion(text)
-	    imgui.TextDisabled('(?)')
-	    if imgui.IsItemHovered() then
-		imgui.BeginTooltip()
-		imgui.PushTextWrapPos(450)
-		imgui.TextUnformatted(text)
-		imgui.PopTextWrapPos()
-		imgui.EndTooltip()
-	end
-end
-		
-		
-		
 	if i_admin_chat_setting.v then
 		imgui.LockPlayer = true
 		imgui.SetNextWindowPos(imgui.ImVec2(10, 10), imgui.Cond.FirstUseEver, imgui.ImVec2(0, 0))
@@ -2231,33 +2071,5 @@ end
 			saveAdminChat()
 		end
 		imgui.End()
-	end
-end
-
-function checkOrClose()
-	if sampGetCurrentDialogId() == 0 and fans == 1 then
-		lua_thread.create(function()
-			wait(200)
-		sampCloseCurrentDialogWithButton(13)
-		sampAddChatMessage("{FF0000}[TakeRep]: {FFFFFF}На данный момент жалоб {FF0000}нету.", 0xFFFFFF)
-	end)
-	elseif sampGetCurrentDialogId() == 2348 and fans == 1 then
-		lua_thread.create(function()
-		sampSendDialogResponse (2348, 1, 0)
-		wait(100)
-		--if string.find(text, "[Ошибка]: {FFFFFF}Администратор уже проверяет данную жалобу", 0, false) then
-		--sampCloseCurrentDialogWithButton(13)
-		--sampAddChatMessage("{FF0000}[TakeRep]: {FFFFFF}Обнаружена {FF0000}жалоба, но администратор уже проверяет её. {FFFFFF}Скрипт закрыл репорт.", 0xFFFFFF)
-		--return
-		--end
-	end)
-		sampAddChatMessage("{FF0000}[TakeRep]: {FFFFFF}Обнаружена {FF0000}жалоба. {FFFFFF}Скрипт её взял.", 0xFFFFFF)
-	elseif sampGetCurrentDialogId() == 2351 then
-		lua_thread.create(function()
-		--wait(100)
-		sampSendDialogResponse(2351, 1, 0, ansToRep)
-		wait(100)
-		sampCloseCurrentDialogWithButton(13)
-	end)
 	end
 end
